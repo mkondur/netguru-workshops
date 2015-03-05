@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!, only: [:destroy, :update, :create]
+  before_action :authenticate_user!, only: [:destroy, :update, :create, :edit]
   before_action :authenticate_owner!, only: [:edit, :update]
 
   expose(:category)
@@ -8,21 +8,7 @@ class ProductsController < ApplicationController
   expose(:review) { Review.new }
   expose_decorated(:reviews, ancestor: :product)
 
-  def index
-  end
-
-  def show
-  end
-
-  def new
-  end
-
-  def edit
-  end
-
   def create
-    self.product = Product.new(product_params)
-
     if product.save
       category.products << product
       redirect_to category_product_url(category, product), notice: 'Product was successfully created.'
@@ -32,14 +18,13 @@ class ProductsController < ApplicationController
   end
 
   def update
-    if self.product.update(product_params)
+    if product.update(product_params)
       redirect_to category_product_url(category, product), notice: 'Product was successfully updated.'
     else
       render action: 'edit'
     end
   end
-
-  # DELETE /products/1
+  
   def destroy
     product.destroy
     redirect_to category_url(product.category), notice: 'Product was successfully destroyed.'
