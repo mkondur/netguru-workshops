@@ -6,21 +6,7 @@ class CategoriesController < ApplicationController
   expose(:category)
   expose(:product) { Product.new }
 
-  def index
-  end
-
-  def show
-  end
-
-  def new
-  end
-
-  def edit
-  end
-
   def create
-    self.category = Category.new(category_params)
-
     if category.save
       redirect_to category, notice: 'Category was successfully created.'
     else
