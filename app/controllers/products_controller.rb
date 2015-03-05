@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
   def create
     if product.save
       category.products << product
-      redirect_to category_product_url(category, product), notice: 'Product was successfully created.'
+      redirect_to category_product_url(category, product), notice: t('products.notices.create')
     else
       render action: 'new'
     end
@@ -19,7 +19,7 @@ class ProductsController < ApplicationController
 
   def update
     if product.update(product_params)
-      redirect_to category_product_url(category, product), notice: 'Product was successfully updated.'
+      redirect_to category_product_url(category, product), notice: t('products.notices.update')
     else
       render action: 'edit'
     end
@@ -27,7 +27,7 @@ class ProductsController < ApplicationController
 
   def destroy
     product.destroy
-    redirect_to category_url(product.category), notice: 'Product was successfully destroyed.'
+    redirect_to category_url(product.category), notice: t('products.notices.destroy')
   end
 
   private
@@ -35,7 +35,7 @@ class ProductsController < ApplicationController
   def authenticate_owner!
     return if owner?
     redirect_to category_product_url(category, product)
-    flash[:error] = 'You are not allowed to edit this product.'
+    flash[:error] = t('products.errors.owner')
   end
 
   def owner?

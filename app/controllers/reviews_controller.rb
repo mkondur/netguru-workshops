@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
   def create
     if review.save
       product.reviews << review
-      redirect_to category_product_url(product.category, product), notice: 'Review was successfully created.'
+      redirect_to category_product_url(product.category, product), notice: t('reviews.notices.create')
     else
       render action: 'new'
     end
@@ -13,7 +13,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     review.destroy
-    redirect_to category_product_url(product.category, product), notice: 'Review was successfully destroyed.'
+    redirect_to category_product_url(product.category, product), notice: t('reviews.notices.destroy')
   end
 
   private
