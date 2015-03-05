@@ -4,8 +4,8 @@ class ProductsController < ApplicationController
 
   expose(:category)
   expose(:products)
-  expose(:product)
-  expose(:review) { Review.new }
+  expose(:product, attributes: :product_params)
+  expose(:review) { product.reviews.build }
   expose_decorated(:reviews, ancestor: :product)
 
   def create

@@ -68,7 +68,8 @@ describe ProductsController do
 
         it 'does not update product' do
           put :update, { id: product.to_param, product: { 'title' => 'MyNewString' }, category_id: category.to_param }
-          expect(controller.product.title).to_not eq 'MyNewString'
+          expect(controller.product.reload.title).to_not eq 'MyNewString'
+          expect(Product.find(product.id).title).to_not eq 'MyNewString'
         end
 
         it 'renders error message' do
