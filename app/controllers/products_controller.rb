@@ -24,7 +24,7 @@ class ProductsController < ApplicationController
       render action: 'edit'
     end
   end
-  
+
   def destroy
     product.destroy
     redirect_to category_url(product.category), notice: 'Product was successfully destroyed.'
