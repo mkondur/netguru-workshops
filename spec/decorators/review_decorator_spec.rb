@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe ReviewDecorator do
 
-  let(:user) { build(:user, firstname: 'John', lastname: 'Doe') }
+  let(:user) { build(:user, first_name: 'John', last_name: 'Doe') }
   let(:review) { described_class.new(build(:review, user: user)) }
 
   describe '#author' do
