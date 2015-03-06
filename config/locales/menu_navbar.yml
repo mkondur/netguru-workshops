@@ -1,0 +1,6 @@
+en:
+  menu_navbar:
+    sign_in: Sign in
+    sign_up: Register
+    sign_out: logout
+    edit_user: edit profile
