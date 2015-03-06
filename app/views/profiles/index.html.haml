@@ -1,5 +1,5 @@
 .container
-  %h2= "#{profile.humanize_name} Profile"
+  %h2= t('.profile_header', full_name: profile.humanize_name)
   .row
     .col-xs-12.col-md-8
       %strong= t('.full_name')
