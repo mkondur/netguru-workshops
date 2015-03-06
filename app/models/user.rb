@@ -8,4 +8,8 @@ class User < ActiveRecord::Base
   has_many :products
 
   validates :first_name, :last_name, presence: true
+
+  def recently_reviews
+    reviews.order(id: :desc).limit(5)
+  end
 end

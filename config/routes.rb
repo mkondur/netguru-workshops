@@ -5,6 +5,8 @@ Rails.application.routes.draw do
                        passwords: "users/passwords"
                    }
 
+  resources :profiles, only: :index
+
   resources :categories do
     resources :products do
       resources :reviews

@@ -1,0 +1,17 @@
+.container
+  %h2= "#{profile.humanize_name} Profile"
+  .row
+    .col-xs-12.col-md-8
+      %strong= t('.full_name')
+      = profile.humanize_name
+  .row
+    .col-xs-6.col-md-4
+      %strong= t('.email')
+      = profile.email
+  .row
+    .col-xs-6.col-md-4
+      %strong= t('.role')
+      = profile.role
+
+  %h3= t('.recently_reviews')
+  = render partial: "review", collection: reviews
