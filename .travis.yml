@@ -9,7 +9,10 @@ deploy:
     - 'rake db:migrate'
   app: <%= ENV['HEROKU_APP_NAME'] %>
   on:
-    repo: netguru-training/workshops
+    repo: mkondur/netguru-workshops
 before_script:
+  - export RAILS_ENV=test
   - cp config/database.yml.travis config/database.yml
   - psql -c 'create database travis_ci_test;' -U postgres
+script:
+  - bundle exec rspec spec
