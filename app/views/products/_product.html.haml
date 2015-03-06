@@ -1,2 +1,4 @@
 .row
   = product.link_with_title_and_description
+  - if product.owner?(current_user)
+    = product.edit_link

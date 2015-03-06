@@ -9,4 +9,8 @@ class Product < ActiveRecord::Base
   def average_rating
     reviews.average(:rating)
   end
+
+  def owner?(some_user)
+    user == some_user
+  end
 end
