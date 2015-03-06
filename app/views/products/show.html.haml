@@ -17,6 +17,7 @@
 
 %h3 Reviews
 = render 'reviews/form'
-= render reviews
+- unless reviews.empty?
+  = render reviews
 
 = link_to 'Back', category_products_path, class: 'btn btn-primary'
