@@ -1,13 +1,12 @@
 class ReviewsController < ApplicationController
-  expose(:review)
+  expose(:review, attributes: :review_params)
   expose(:product)
 
   def create
     if review.save
-      product.reviews << review
       redirect_to category_product_url(product.category, product), notice: t('reviews.notices.create')
     else
-      render action: 'new'
+      redirect_to edit_category_product_path(product.category, product)
     end
   end
 
@@ -19,6 +18,6 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:content, :rating)
+    params.require(:review).permit(:content, :rating).merge(user_id: current_user.id, product_id: product.id)
   end
 end
