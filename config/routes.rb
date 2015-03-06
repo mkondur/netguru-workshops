@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :user
+  devise_for :users, controllers: {
+                       sessions: "users/sessions",
+                       registrations: "users/registrations",
+                       passwords: "users/passwords"
+                   }
 
   resources :categories do
     resources :products do

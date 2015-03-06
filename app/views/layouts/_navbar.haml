@@ -21,4 +21,4 @@
               %b.caret
             %ul.dropdown-menu
               %li= link_to t('menu_navbar.edit_user'), edit_user_registration_path
-              %li= link_to t('menu_navbar.sign_out'), destroy_user_session_path
+              %li= link_to t('menu_navbar.sign_out'), destroy_user_session_path, method: :delete
