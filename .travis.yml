@@ -1,18 +1,18 @@
 language: ruby
 rvm:
-  - 2.1.5
+- 2.1.5
 deploy:
   provider: heroku
   api_key:
-    secure: <%= ENV['API_SECRET'] %>
+    secure: KAxl7cQpJ8iSu2wsF6aZL1O2OqX6kRPCVJU79qRIgRcKJjhO0tI5ZqwbR5UP6OPGCw5nviHw8lmOrtYlPWkGcm7f2TbZHJBHpmfQY6bgCNOD0ukF323eSjZ9DjxoktkXerGFpnz3jrMiYgSuUCGicAnDmfwn3BlpP6XYyEX/gjE=
   run:
-    - 'rake db:migrate'
-  app: <%= ENV['HEROKU_APP_NAME'] %>
+  - rake db:migrate
+  app: netguru-rzeszow-workshops
   on:
     repo: mkondur/netguru-workshops
 before_script:
-  - export RAILS_ENV=test
-  - cp config/database.yml.travis config/database.yml
-  - psql -c 'create database travis_ci_test;' -U postgres
+- export RAILS_ENV=test
+- cp config/database.yml.travis config/database.yml
+- psql -c 'create database travis_ci_test;' -U postgres
 script:
-  - bundle exec rspec spec
+- bundle exec rspec spec
